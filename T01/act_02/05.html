@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <script>
+    let num1;
+    // Se puede parsear directamente el promt
+    num1 = parseFloat(prompt ("Introduce un número: "));
+    
+    let num2;
+    num2 = parseFloat(prompt ("Introduce un número: "));
+  
+
+    let num3;
+    num3 = parseFloat(prompt ("Introduce un número: "));
+  
+
+    var alerta;
+    //Comprobamos mediante mayor y menor todas las combinaciones posibles
+    // isNaN evita que al introducir una letra este intente calcular y salte una excepción
+    if(isNaN(num1) || isNaN(num2) || isNaN(num3)){
+        alerta = "Introduce un número correcto.";
+    }  else if (num1 <= num2 && num1 <= num3 && num2 <= num3) {
+        alerta = num1 + " / " + num2 + " / " + num3;
+    } else if (num1 <= num2 && num1 <= num3 && num3 <= num2) {
+        alerta = num1 + " / " + num3 + " / " + num2;
+    } else if (num2 <= num1 && num2 <= num3 && num1 <= num3) {
+        alerta = num2 + " / " + num1 + " / " + num3;
+    } else if (num2 <= num1 && num2 <= num3 && num3 <= num1) {
+        alerta = num2 + " / " + num3 + " / " + num1;
+    } else if (num3 <= num1 && num3 <= num2 && num1 <= num2) {
+        alerta = num3 + " / " + num1 + " / " + num2;
+    } else if (num3 <= num1 && num3 <= num2 && num2 <= num1) {
+        alerta = num3 + " / " + num2 + " / " + num1;
+    }
+    // Si introduces todos los números iguales saltará esta excepción
+    else {
+        alerta = "Los números son iguales";
+    }
+ </script>
+</head>
+<body onload="javascript:alert(alerta);"></body>
+
+</html>

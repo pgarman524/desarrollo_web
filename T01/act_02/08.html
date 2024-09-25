@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    let num1;
+    num1 = parseFloat(prompt ("Introduce un número: "));
+
+    var alerta = "";
+    var factores = "";
+    let divisor = 2;
+        do{
+            /* SI el divisor del num introducido es 0,
+            se realiza el cálculo y el resultado pasa a ser el num introducido
+            */
+            if(num1 % divisor == 0){
+                cuenta = num1 / divisor;
+                num1 = cuenta;
+                // Esto es para que el num introducido si es 1 no concaene *
+                if(num1==1){
+                    alerta=alerta+divisor
+                // Esto es para concadenar el resultado del promt 
+                }else{
+                    alerta=alerta+divisor+" * "
+                }
+            // Si el múltiplo no da 0 entonces el divisor se suma para repetir la división.
+            }else{
+                divisor ++;
+            }
+           //Sigue en buble mientras el resultado no sea 1 
+        }while(cuenta != 1);
+
+    </script>
+
+
+
+</head>
+<body>
+        <body onload="javascript:alert(alerta);"></body>
+</body>
+</html>

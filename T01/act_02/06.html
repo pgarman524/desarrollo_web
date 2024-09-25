@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script>
+    let a = parseFloat(prompt ("Introduce un número: "));
+    
+    let b = parseFloat(prompt ("Introduce un número: "));
+  
+    let c = parseFloat(prompt ("Introduce un número: "));
+        
+    // Realizamos la elevación y resolvemos el interior de la raiz cuadrada
+    var resultadoUno = Math.pow(b,2) - 4*a*c;
+
+    // Calculamos la raiz cuadrada del resultado anterior
+    var resultadoRaiz = Math.sqrt(resultadoUno)
+
+    // Calculamos la división final con las dos salidas, para + y para -
+    var resultadoPlus = (-b + resultadoRaiz) / 2 * a;
+
+    var resultadoMinus = (-b - resultadoRaiz) / 2 * a;
+
+    let alerta1 = resultadoMinus + " y " + resultadoPlus;
+
+    
+    </script>
+    
+</head>
+<body>
+    <body onload="javascript:alert(alerta1);"></body>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script>
+    let num1;
+    num1 = prompt("Introduce la nómina: ");
+    parseInt(num1);
+    parseFloat(num1);
+
+    let num2;
+    num2 = prompt("Introduce la antigüedad: ");
+    parseInt(num2);
+    parseFloat(num2);
+
+    
+    var alerta;
+    if(isNaN(num1) || isNaN(num2)){
+        alerta = "Introduce datos correctos";
+    }else if(num1 < 750 && num2 >= 10){
+        saldo = parseFloat(num1) * 0.1 + parseFloat(num1);
+                alerta = "Su sueldo es de " + saldo + "€";
+    }else if(num1 >= 750 && num2 >= 10){
+        saldo = parseFloat(num1) * 0.05 + parseFloat(num1);
+        alerta = "Su sueldo es de " + saldo + "€";
+    }else if(num2 < 10){
+        alerta = "Su sueldo es de "+ num1 + "€";
+    }
+
+   </script>
+
+</head>
+   
+<body onload="javascript:alert(alerta);"></body>
+
+</html>

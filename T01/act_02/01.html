@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <script>
+    let num1;
+    num1 = prompt("Introduce el primer número: ");
+    parseFloat(num1);
+
+    let num2;
+    num2 = prompt("Introduce el segundo número: ");
+    parseFloat(num2);
+
+    var alerta;
+    if(isNaN(num1) || isNaN(num2)){
+        alerta = "Introduce datos correctos";
+    }else if(num1 > num2){
+        alerta = num1 + " es mayor que " + num2;
+    }else if(num2 > num1){
+        alerta = num2 + " es mayor que " + num1;
+    }else if(num2 == num1){
+        alerta = num1 + " es igual que " + num2;
+    }
+
+   </script>
+
+</head>
+   
+<body onload="javascript:alert(alerta);"></body>
+
+</html>
