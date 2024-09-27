@@ -6,33 +6,160 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú</title>
     <script>
-      
-        do {
-            var menu =
+        //Menú principal donde se encuentran todas las opciones
+        function menuFuncion() {
+            let mensaje =
                 "Elige una opción:\n" +
-                "1.Elija entre cubo, esfera o cilindro.\n" +
-                "2.Introduzca los valores de las variables.\n" +
-                "3.Cálculo de volumen.\n" +
-                "4.Cálculo de  área.\n" +
-                "5.Finalizar";
-            var selector = isNaN(prompt(selector));
+                "   1.Elija entre cubo, esfera o cilindro.\n" +
+                "   2.Introduzca los valores de las letiables.\n" +
+                "   3.Cálculo de volumen.\n" +
+                "   4.Cálculo de  área.\n" +
+                "   5.Finalizar";
+            // let selector = isNaN(prompt(selector));
+
+            /*
+              1. Transformamos el mensaje en el selector para usar el número introducido en el switch  
+              2. Creamos un if para los errores. Si no es número devuelve verdadero, luego controla que el número esté entre 1 y 5
+            */
+            selector = parseInt(prompt(mensaje));
+            if (isNaN(selector) || selector > 5 || selector < 1) {
+                alert("Introduce un número correcto");
+
+            }
 
             switch (selector) {
-                case selector == 1:
-
+                case 1:
+                    selectorFigura();
                     break;
 
-                case selector == 2:
+                case 2:
+                    medidasElegidas();
+                    break;
 
+                case 3:
+                    opcionVolumen();
+                    break;
+
+                case 4:
+                    opcionArea();
+                    break;
+                case 5:
                     break;
             }
 
 
+        }
+
+        // Submenú para seleccionar una figura. El promt quedará guardado en la variable figura
+        function selectorFigura() {
+            let mensaje = "Elije una figura(marcar con un número del 1 - 3):\n" +
+                "   1.Cubo\n" +
+                "   2.Esfera\n" +
+                "   3.Cilindro"
+            figura = parseInt(prompt(mensaje));
+            if (isNaN(figura) || figura > 3 || figura < 1) {
+                alert("Introduce un número correcto");
+            }
+            return figura;
+        }
+
+        // Dependiendo de qué se haya elegido en figura, entrará en una opción u otra
+        function medidasElegidas() {
+            if (figura == 1) {
+                let mensaje = "Introduce las medidas del lado del cubo (cm): ";
+                ladoCubo = parseFloat(prompt(mensaje));
+                if (isNaN(ladoCubo)) {
+                    alert("Introduce un número correcto");
+                }
+                return ladoCubo;
+
+            } else if (figura == 2) {
+                let mensaje = "Introduce las medidas del radio de la esfera (cm): ";
+                radioEsfera = parseFloat(prompt(mensaje));
+                if (isNaN(radioEsfera)) {
+                    alert("Introduce un número correcto");
+                }
+                return radioEsfera;
+
+            } else if (figura == 3) {
+                let mensaje = "Introduce las medidas del radio del cilindro (cm): ";
+                radioCilindro = parseFloat(prompt(mensaje));
+                let mensaje2 = "Introduce las medidas de la altura del cilindro (cm): ";
+                alturaCilindro = parseFloat(prompt(mensaje2));
+                if (isNaN(alturaCilindro || radioCilindro)) {
+                    alert("Introduce un número correcto");
+                }
+                return radioCilindro && alturaCilindro;
+            }
+        }
+
+        // -------------------------------- CÁLCULOS  DE VOLUMEN --------------------------------------
+
+        function calcularVolCubo() {
+            //Math.pow(número, elevados)
+            let VolCubo = Math.pow(ladoCubo, 3);
+            alert("El volumen del cubo es de: " + VolCubo + "cm3");
+        }
+
+        function calcularVolEsfera() {
+            // Math.PI === 3.14159
+            let volEsfera = (4 / 3) * (Math.PI * Math.pow(radioEsfera, 3));
+            alert("El volumen de la esfera es de: " + volEsfera + "cm3")
+        }
+
+        function calcularVolCilindro() {
+            let volCilindro = Math.PI * Math.pow(radioCilindro, 2) * alturaCilindro;
+            alert("El volumen del cilindro es de: " + volCilindro + "cm3");
+        }
+
+
+        // -------------------------------- CÁLCULOS  DE ÁREA --------------------------------------
+
+        function calcularAreaCubo() {
+            let arCubo = 6 * (ladoCubo * ladoCubo);
+            alert("El área del cubo es de: " + arCubo + "cm2");
+        }
+
+        function calcularAreaEsfera() {
+            let arEsfera = 4 * (Math.PI * Math.pow(radioEsfera, 2))
+            alert("El área de la esfera es de: " + arEsfera + "cm2")
+        }
+
+        function calcularAreaCilindro() {
+            let arCilindro = 2 * Math.PI * radioCilindro * (alturaCilindro + radioCilindro);
+            alert("El área del cilindro es de: " + arCilindro + "cm2");
+        }
+
+        // -------------------------------- OPCIONES DE CÁLCULOS ----------------------------------
+
+        function opcionVolumen() {
+            if (figura == 1) {
+                calcularVolCubo();
+            } else if (figura == 2) {
+                calcularVolEsfera();
+            } else if (figura == 3) {
+                calcularVolCilindro();
+            }
+        }
+
+        function opcionArea() {
+            if (figura == 1) {
+                calcularAreaCubo();
+            } else if (figura == 2) {
+                calcularAreaEsfera();
+            } else if (figura == 3) {
+                calcularAreaCilindro();
+            }
+        }
 
 
 
 
+        // ------------------------------------ PROGRAMA -----------------------------------------
 
+        do {
+            //Llamamos a la función del menú
+            menuFuncion();
         } while (selector != 5);
 
 
