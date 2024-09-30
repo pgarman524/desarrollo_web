@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menú</title>
+
+    <script>
+        function menu() {
+            let mensaje = "Seleccione una de las siguientes opciones:\n" +
+                "1. Elije entre un cubo, una esfera y un cilindro.\n" +
+                "2. Introduzca los valores de las variables.\n" +
+                "3. Cálculo de volumen.\n" +
+                "4. Cálculo de área.\n" +
+                "5. Finalizar\n"
+
+            selector = parseInt(prompt(mensaje));
+            //Si no es número o menor que cero o mayor que cinco, da error
+            if (isNaN(selector) || selector < 0 || selector > 5) {
+                alert("introduce un número válido.");
+            }
+
+            //El menú como tal.
+            switch (selector) {
+                case 1:
+                    selectorFigura();
+                    break;
+                case 2:
+                    seleccionarMedidas();
+                    break;
+                case 3:
+                    calcularVolumen();
+                    break;
+
+                case 4:
+                    calcularArea();
+                    break;
+
+                case 5:
+
+                    break;
+            }
+        }
+        //Transformamos figura en mensaje, o sea el num que introduces en el mensaje es figura.
+        function selectorFigura() {
+            let mensaje = "Selecciona una figura: \n" +
+                "1. Cubo.\n" +
+                "2. Esfera. \n" +
+                "3. Cilindro"
+            figura = parseInt(prompt(mensaje));
+
+            if (isNaN(figura) || figura < 0 || figura > 3) {
+                alert("Introduce un número válido.")
+            }
+            //devolvemos la figura
+            return figura;
+        }
+
+        //Esta función según la figura elegirá una opción
+        function seleccionarMedidas() {
+            if (figura == 1) {
+                let mensaje = "Introduce las medidas del lado del cubo (cm): ";
+                ladoCubo = parseFloat(prompt(mensaje));
+                if (isNaN(ladoCubo)) {
+                    alert("Introduce un número correcto");
+                }
+                return ladoCubo;
+
+            } else if (figura == 2) {
+                let mensaje = "Introduce el radio de la esfera (cm): ";
+                radioEsfera = parseFloat(prompt(mensaje));
+                if (isNaN(radioEsfera)) {
+                    alert("Introduce un número correcto");
+                }
+                return radioEsfera;
+
+            } else if (figura == 3) {
+                //Para esta ocasión debemos dar dos
+                let mensaje = "Introduce las medidas del radio del cilindro (cm): ";
+                radioCilindro = parseFloat(prompt(mensaje));
+                let mensaje2 = "Introduce las medidas de la altura del cilindro (cm): ";
+                alturaCilindro = parseFloat(prompt(mensaje2));
+                if (isNaN(alturaCilindro || radioCilindro)) {
+                    alert("Introduce un número correcto");
+                }
+                return radioCilindro && alturaCilindro;
+            }
+        }
+
+        //Aquí calcula el volumen según la figura seleccionada
+        function calcularVolumen() {
+            if (figura == 1) {
+                let volCubo = Math.pow(ladoCubo, 3);
+                alert("El lado del cubo es de: " + volCubo + " cm3");
+            } else if (figura == 2) {
+                let volEsfera = (4 / 3) * (Math.PI * Math.pow(radioEsfera, 3));
+                alert("El volumen de la esfera es de: " + volEsfera + "cm3")
+            } else if (figura == 3) {
+                let volCilindro = (Math.PI * Math.pow(radioCilindro, 2)) * alturaCilindro;
+                alert("El volumen del cilindro es de: " + volCilindro + "cm3")
+            }
+        }
+
+
+        //Aquí calcula el área según la figura seleccionada
+        function calcularArea() {
+            if (figura == 1) {
+                let arCubo = 6 * (Math.pow(ladoCubo, 2));
+                alert("El área del cubo es de: " + arCubo + " cm3");
+            } else if (figura == 2) {
+                let arEsfera = 4 * (Math.PI * Math.pow(radioEsfera, 2))
+                alert("El área de la esfera es de: " + arEsfera + "cm2")
+            } else if (figura == 3) {
+                let arCilindro = 2 * Math.PI * radioCilindro * (radioCilindro + alturaCilindro)
+                alert("El área del cilindro es de: " + arCilindro + "cm3")
+            }
+        }
+
+
+        //---------------------------- MENÚ -----------------------------------
+        do {
+            menu();
+        } while (selector != 5)
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
