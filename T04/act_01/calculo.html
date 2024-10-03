@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- media (1,1,5,8,5) ------ (2+1+5+8+5) / 5
+rango 8-1 =  7
+moda 1º) (2,1,5,8,5)  == 5
+2º) (2,1,5,8)   == No hay moda
+3º) (2,2,3,5,8,5)   == 2,5
+4º) (2,2,1,5,8,5)   == (2+5) / 2 = 3.5
+-->
+
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema4/Actividad01</title>
+    <script>
+
+
+
+        /**
+                function anadirNum() {
+                    let arrNum = [];
+                    let num = parseFloat(selector);
+                    arrNum.push(num);
+                    for (let i = 0; i < arrNum.length; i++) {
+                        alert(arrNum[i]);
+                    }
+                }
+                    for (let i = 0; i < arrNum.length; i++) {
+                        alert(arrNum[i]);
+                    }
+        */
+
+        function menu() {
+            let arrNum = [];
+            while (true) {
+                let mensaje = "Introduce un número: ";
+                let selector = prompt(mensaje);
+                if (selector === 'f') {
+                    media();
+                    rango();
+                    break;
+                } else {
+                    let num = parseFloat(selector);
+                    arrNum.push(num);
+                    alert(arrNum);
+                }
+            }
+            //La function tiene que estar dentro para que pueda usar el arrNum[]
+            function media() {
+                for (let i = 0; i < arrNum.length; i++) {
+                    let mediaCalculo = 0;
+                    mediaCalculo += arrNum[i];
+                    //La media suma todos sus valores y luego se divide entre el max del array
+                    mediaFinal = mediaCalculo / arrNum.length;
+                    alert("La media es de: " + mediaFinal)
+                    return mediaFinal;
+                }
+            }
+            function rango() {
+                //.sort ordena de menor a mayor los números
+                // arrNum.sort;
+                for (let i = 0; i < arrNum.length; i++) {
+                    let min = arrNum[0];
+                    let max = arrNum[arrNum.length - 1];
+
+                    let rangoCalc = 0;
+                    // restamos el tamaño max del  arr -1 (para que nos de el tamaño real ya que empiezan en 0) y la posición 0 del arr
+                    rangoCalc = arrNum[arrNum.length - 1] - arrNum[0];
+                    alert("El rango es de: " + rangoCalc);
+                }
+            }
+
+            function moda() {
+
+            }
+        }
+
+
+
+
+
+
+
+
+
+        menu();
+
+    </script>
+
+</head>
+
+<body>
+
+</body>
+
+</html>
