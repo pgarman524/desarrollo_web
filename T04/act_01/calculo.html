@@ -38,7 +38,9 @@ moda 1º) (2,1,5,8,5)  == 5
                 let selector = prompt(mensaje);
                 if (selector === 'f') {
                     media();
+                    //Introducimos en la función arrNum para poder hacer los cálculos
                     rango(arrNum);
+                    moda(arrNum);
                     break;
                 } else {
                     let num = parseFloat(selector);
@@ -48,8 +50,8 @@ moda 1º) (2,1,5,8,5)  == 5
             }
             //La function tiene que estar dentro para que pueda usar el arrNum[]
             function media() {
-                if (arrNum.length === 0) {
-                    alert("No hay números en el array.");
+                if (arrNum.length == 0) {
+                    alert("No hay números aún introducidos");
                     return;
                 }
                 for (let i = 0; i < arrNum.length; i++) {
@@ -64,15 +66,15 @@ moda 1º) (2,1,5,8,5)  == 5
             //En esta función introducimos el parámetro arrNum llamado arr para que tenga en cuenta los índices de nuestro arr principal
             function rango(arr) {
                 // Si no hay números en el array te da una alerta.
-                if (arr.length === 0) {
-                    alert("No hay números en el array.");
+                if (arr.length == 0) {
+                    alert("No hay números aún introducidos");
                     return;
                 }
 
                 let min = arr[0];
                 let max = arr[0];
 
-                for (let i = 1; i < arr.length; i++) {
+                for (let i = 0; i < arr.length - 1; i++) {
 
                     // Comparamos con el num del arrNum y si este es menor que min, este se transforma
                     if (arr[i] < min) {
@@ -90,8 +92,48 @@ moda 1º) (2,1,5,8,5)  == 5
                 return rangoCalc;
             }
 
-            function moda() {
+            function moda(arr) {
+                if (arr.length == 0) {
+                    alert("No hay números aún introducidos");
+                    return;
+                }
 
+                // Este es el contador
+                let token = {};
+
+                // Contamos la frecuencia de cada número
+                for (let i = 0; i < arr.length; i++) {
+                    let num = arr[i];
+
+                    // Incremento el contador si el número ya se ha repetido
+                    if (token[num]) {
+                        token[num]++;
+                    } else {
+                        // Si no se ha visto antes, inicializa en 1
+                        token[num] = 1;
+                    }
+                }
+
+                //Esto nos servirá para ver quién es el número que más veces aparece
+                let contadorMax = 0;
+                let moda = null;
+
+                // Buscamos el número que más se repite
+                for (let i = 0; i < arr.length; i++) {
+                    let num = arr[i];
+
+                    if (token[num] > contadorMax) {
+                        contadorMax = token[num];
+                        moda = num;
+                    }
+                }
+
+
+                if (contadorMax > 1) {
+                    alert("La moda es: " + moda);
+                } else {
+                    alert("No hay moda.");
+                }
             }
         }
 
