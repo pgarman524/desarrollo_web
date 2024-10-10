@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //Valor [3,4,1,2,5]
+        //(Impar el tamaño del arr) 1º 1,2,3,4,5 -> mediana = 3
+        //(Par el tamaño del arr) 2º 1,5,3,2,4,6 -> mediana = mediana 3 + 4 / 2 = 3,5
+        //1,2,3,4,5,6 
+        function menu() {
+            let arrNum = [];
+            while (true) {
+                let mensaje = "Introduce los números: ";
+                let selector = prompt(mensaje);
+                if (selector === 'f') {
+                    media(arrNum);
+                    break;
+
+                } else {
+                    let num = parseFloat(selector);
+                    arrNum.push(num);
+                    alert(arrNum);
+                }
+            }
+
+            function media(arr) {
+                if (arr.length == 0) {
+                    alert("No hay números aún introducidos");
+                    return;
+                }
+
+                if ((arr.length % 2) != 0) {
+                    arr.sort(function (a, b) { return a - b });
+                    let y = arr.slice(2, ((arr.length + 1) / 2));
+                    alert("La media es: " + y);
+                } else {
+
+                    arr.sort(function (a, b) { return a - b });
+                    let y = arr.slice(2, ((arr.length + 1) / 2));
+                    let e = arr.slice(3, ((arr.length + 1) / 2));
+
+                    let calculo = (y + e) / 2;
+                    alert("La media es: " + calculo);
+                }
+
+            }
+        };
+
+
+
+        menu();
+
+
+
+    </script>
+
+</body>
+
+</html>

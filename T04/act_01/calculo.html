@@ -99,14 +99,18 @@ moda 1º) (2,1,5,8,5)  == 5
                 }
 
                 // Este es el contador
-                let token = {};
+                let token = [];
+                let modas = [];
+                let enMedio = false;
+                let num = arr[i];
+
 
                 // Contamos la frecuencia de cada número
                 for (let i = 0; i < arr.length; i++) {
-                    let num = arr[i];
+
 
                     // Incremento el contador si el número ya se ha repetido
-                    if (token[num]) {
+                    if (token[num] == 1) {
                         token[num]++;
                     } else {
                         // Si no se ha visto antes, inicializa en 1
@@ -127,6 +131,7 @@ moda 1º) (2,1,5,8,5)  == 5
                         moda = num;
                     }
                 }
+
 
 
                 if (contadorMax > 1) {
