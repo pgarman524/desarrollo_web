@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function menu() {
+            let arrNum = [];
+            while (true) {
+                let mensaje = "Introduce los números de una columna: ";
+                let selector = prompt(mensaje);
+                if (selector === 'f') {
+                    fila(arrNum);
+                    break;
+
+                } else {
+                    let num = parseFloat(selector);
+                    arrNum.push(num);
+                    alert(arrNum);
+                }
+
+
+                //Necesito:
+                /*
+                1. Introducir los datos en un array
+                2. Poder pasar de array en la misma fila
+                3. Poder introducir en una columna más array en filas
+
+                */
+                function crearArr(arr) {
+                    for (let i = 0; i > arr.lenght - 1; i++) {
+                        filas.push(arr[i]);
+
+                    }
+                }
+
+                function fila(arr) {
+                    let filas = [arr];
+                    while (true) {
+
+                        crearArr(arr);
+                        let mensaje = "Introduce los números de una columna: ";
+                        if (selector === 'f') {
+                            break;
+                        } else {
+                            crearArr(arr);
+                        }
+
+
+
+
+                        alert("Los num  en la fila son: " + filas);
+
+                    }
+                }
+
+            }
+
+
+        }
+
+        menu();
+    </script>
+</body>
+
+</html>
