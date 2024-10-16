@@ -17,26 +17,26 @@
                 let mensaje = "Pulse 'f' para salir, 'c' para introducir números y 'x' para ver los pares e impares: ";
                 let selector = prompt(mensaje);
 
-                if (selector === 'f') {
+                if (selector === 'f') { // Si escribimos 'f' nos sacará del programa
                     break;
-                } else if (selector === 'c') {
+                } else if (selector === 'c') { //Con c podremos introducir los datos
                     let num = parseFloat(prompt("Introduzca un número:"));
-                    if (!isNaN(num)) {
+                    if (!isNaN(num)) { //Si es un número introducimos los datos en el array arrNum 
                         arrNum.push(num);
-                        fila(arrNum);
+                        fila(arrNum); // Llamamos a la función
                     } else {
                         alert("Por favor, introduce un número válido");
                     }
-                } else if (selector === 'x') {
-                    imparPar(arrvacio);
+                } else if (selector === 'x') { //Con x nos mostrará todos los números introducidos
+                    imparPar(arrvacio); // usamos arrvacio para ello. Así los datos pasan a otra copia 
                 }
             }
 
             function fila(arr) {
                 if (arr.length > 0) {
-                    if (arrvacio.length < 6) {//2
-                        arrvacio.push(arr.slice());
-                        arr.length = 0;
+                    if (arrvacio.length < 6) {  //el máximo de datos a introducir en el array es de 6
+                        arrvacio.push(arr.slice()); // creamos una copia del array
+                        arr.length = 0; //evitamos la duplicación de datos
                     } else {
                         alert("Array completo");
                     }

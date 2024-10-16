@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function menu() {
+            let arrNum = [];
+
+            let mensaje = prompt("Introduce los números en el arr con 'c' o sal con 'f'");
+            if (mensaje == 'f') {
+             
+            } else if (mensaje == 'c') {
+                while (true) {
+                    let num = prompt("Introduce un número o pulsa f para salir: ");
+                    if (num == 'f') {
+                        break;
+                    } else {
+                        arrNum.push(Number(num));
+                    }
+                }
+                //ordenar números de menor a mayor
+                console.log(arrNum.sort((a, b) => a - b));
+
+                menor = arrNum[0];
+                mayor = arrNum[arrNum.length - 1]
+
+                alert("El número menor es " + menor + " y el número mayor es " + mayor)
+
+            }
+        }
+        menu();
+
+    </script>
+</body>
+
+</html>

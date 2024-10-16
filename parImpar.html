@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function menu() {
+            let arrNum = [];
+            let arrPares = [];
+            while (true) {
+                let mensaje = prompt("Pulse c para introducir numero o f para salir");
+                if (mensaje == 'f') {
+                    break;
+                } else if (mensaje == 'c') {
+                    while (true) {
+                        let num = prompt("introduzca el número: ")
+                        if (num == 'f') {
+                            break;
+                        }
+                        arrNum.push(Number(num));
+                    }
+                    for (let i = 0; i < arrNum.length; i++) {
+                        if (arrNum[i] % 2 == 0) {
+                            arrPares.push(arrNum[i])
+                        }
+                    }
+
+                    alert("Los pares son: " + arrPares)
+                }
+            }
+        }
+        menu();
+    </script>
+
+</body>
+
+</html>
