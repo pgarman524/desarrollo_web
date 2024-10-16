@@ -43,9 +43,12 @@
 
                     arr.sort(function (a, b) { return a - b });
                     let y = arr.slice(2, ((arr.length + 1) / 2));
-                    let e = arr.slice(3, ((arr.length + 1) / 2));
-
-                    let calculo = (y + e) / 2;
+                    //Esta parte nos da un array con dos elementos. El elemento que nos daría arriba(que está vacio) + el elemento que queremos
+                    let e = arr.slice(2, ((arr.length + 2) / 2))
+                    //Sacamos el segundo elemento del array
+                    let o = e[1];
+                    //Calculamos el primer elemento del arr y con la variable o
+                    let calculo = (y[0] + o) / 2;
                     alert("La media es: " + calculo);
                 }
 

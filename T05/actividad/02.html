@@ -11,17 +11,22 @@
     <script>
         function menu() {
             let arrNum = [];
+            let arrvacio = [];
             while (true) {
-                let mensaje = "Introduce los números de una columna: ";
+                let mensaje = "Pulse 'f' para salir, 'c' para introducir números y 'x' para ver los pares e impares: ";
                 let selector = prompt(mensaje);
                 if (selector === 'f') {
-                    fila(arrNum);
+
                     break;
 
-                } else {
+                } else if (selector === 'c') {
                     let num = parseFloat(selector);
                     arrNum.push(num);
-                    alert(arrNum);
+                    //alert(arrNum);
+                    fila(arrNum);
+
+                } else if (selector === 'x') {
+                    imparPar(arrNum)
                 }
 
 
@@ -30,39 +35,52 @@
                 1. Introducir los datos en un array
                 2. Poder pasar de array en la misma fila
                 3. Poder introducir en una columna más array en filas
-
+ 
                 */
-                function crearArr(arr) {
-                    for (let i = 0; i > arr.lenght - 1; i++) {
-                        filas.push(arr[i]);
 
-                    }
-                }
 
                 function fila(arr) {
-                    let filas = [arr];
-                    while (true) {
-
-                        crearArr(arr);
-                        let mensaje = "Introduce los números de una columna: ";
-                        if (selector === 'f') {
-                            break;
+                    if (arr.length > 0) {
+                        if (arrvacio.length < 2) {
+                            arrvacio.push(arr.slice());
+                            arr = [];
                         } else {
-                            crearArr(arr);
+                            alert("Array completo")
                         }
-
-
-
-
-                        alert("Los num  en la fila son: " + filas);
-
+                        arrvacio.push(arr.slice());
+                        arr = [];
+                    } else {
+                        alert("Sin números a copiar")
                     }
+
+                }
+
+                function imparPar(arr) {
+                    let impar = [];
+                    let par = [];
+
+                    for (let i = 0; i < arr.length; i++) {
+                        for (let j = 0; j < arr.length; j++) {
+                            let num = arr[i][j];
+
+                            if (num % 2 != 0) {
+                                impar.push(num);
+                            } else {
+                                par.push(num);
+                            }
+                        }
+                    }
+                    alert("Los números pares son: " + par);
+                    alert("Los números impares son: " + impar);
+
                 }
 
             }
 
-
         }
+
+
+
 
         menu();
     </script>

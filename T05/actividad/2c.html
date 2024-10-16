@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        function menu() {
+            let arrNum = [];
+            let arrvacio = [];
+
+            while (true) {
+                let mensaje = "Pulse 'f' para salir, 'c' para introducir números y 'x' para ver los pares e impares: ";
+                let selector = prompt(mensaje);
+
+                if (selector === 'f') {
+                    break;
+                } else if (selector === 'c') {
+                    let num = parseFloat(prompt("Introduzca un número:"));
+                    if (!isNaN(num)) {
+                        arrNum.push(num);
+                        fila(arrNum);
+                    } else {
+                        alert("Por favor, introduce un número válido");
+                    }
+                } else if (selector === 'x') {
+                    imparPar(arrvacio);
+                }
+            }
+
+            function fila(arr) {
+                if (arr.length > 0) {
+                    if (arrvacio.length < 6) {//2
+                        arrvacio.push(arr.slice());
+                        arr.length = 0;
+                    } else {
+                        alert("Array completo");
+                    }
+                } else {
+                    alert("Sin números a copiar");
+                }
+            }
+
+            function imparPar(arr) {
+                let impar = [];
+                let par = [];
+
+                for (let i = 0; i < arr.length; i++) {
+                    for (let j = 0; j < arr[i].length; j++) {
+                        let num = arr[i][j];
+                        if (num % 2 !== 0) {
+                            impar.push(num);
+                        } else {
+                            par.push(num);
+                        }
+                    }
+                }
+                alert("Los números pares son: " + par.join(", "));
+                alert("Los números impares son: " + impar.join(", "));
+            }
+        }
+
+        menu();
+    </script>
+</body>
+
+</html>
