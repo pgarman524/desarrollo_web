@@ -1,0 +1,146 @@
+<!-- EXAMEN_01 -- PABLO GARCÍA MANGANA -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen01</title>
+</head>
+
+<body>
+    <script>
+
+        function menu() {
+            criterioUno = [];
+            criterioDos = [];
+            criterioTres = [];
+            arrNotasCriterios = [];
+
+            while (true) {
+                let mensaje = prompt("Pulse s para introducir un criterio o f para salir");
+                let selector = mensaje;
+                if (selector === 'f') {
+                    //Sale del programa si es F
+                    break;
+                    //Empezamosa  añadir en los array con S
+                } else if (selector === 's') {
+                    //Bucle para repetir el promt
+                    do {
+                        selector = prompt("Introduce las notas en C1. Pulsa s para cambiar a C2");
+                        //Evitamos el error de que al introducir S se añada en el array cono NaN con Number(selector)
+                        if (Number(selector)) {
+                            criterioUno.push(Number(selector));
+                        }
+                        //Cuando sea s se sale del bucle
+                    } while (selector !== 's')
+                    //Repetimos dos veces más para los otros dos array
+                    if (selector === 's') {
+                        do {
+                            selector = prompt("Introduce las notas en C2. Pulsa s para cambiar a C3");
+                            if (Number(selector)) {
+                                criterioDos.push(Number(selector));
+                            }
+                        } while (selector !== 's')
+
+                        //No entra en el sector 3     ;(
+
+                        if (selector === 's') {
+                            do {
+                                if (Number(selector)) {
+                                    selector = prompt("Introduce las notas en C3. Pulsa s para finalizar y ver resultados");
+                                    criterioTres.push(Number(selector));
+                                }
+                            } while (selector !== 's')
+                        }
+                    }
+                }
+
+                alert("C1: " + criterioUno.join(", "));
+                alert("C1 Total: " + calculoC1(criterioUno));
+                alert("C2: " + criterioDos.join(", "));
+                alert("C2 Total: " + calculoC2(criterioDos));
+                alert("C3: " + criterioTres.join(", "));
+                alert("C3 Total: " + calculoC3(criterioTres));
+
+                //Añadimos al arry de la nota final para calcular
+                arrNotasCriterios.push(calculoC1(criterioUno));
+                arrNotasCriterios.push(calculoC2(criterioDos));
+                arrNotasCriterios.push(calculoC3(criterioTres));
+
+                // Mostramos la nota final con la función
+                alert("Nota final: " + calculoFinal(arrNotasCriterios));
+
+                //Ordenar de mayor a menor las  notas
+                arrVector = arrNotasCriterios.sort((a, b) => a - b);
+
+                console.log(arrVector);
+
+
+
+
+            }
+
+            function calculoC1(arr) {
+                let c1Suma = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    //Sumamos continuamente todos los números del arr en el for
+                    c1Suma += arr[i];
+                };
+                //Cuando ya hemos recorrido el arr, dividimos entre x numeros
+                let numVariable = (arr.length);
+                let c1Total = c1Suma / numVariable;
+                //Devoolvemos el resultado
+                return c1Total;
+
+            }
+            function calculoC2(arr) {
+                let c1Suma = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    //Sumamos continuamente todos los números del arr en el for
+                    c1Suma += arr[i];
+                };
+                //Cuando ya hemos recorrido el arr, dividimos entre x numeros
+                let numVariable = (arr.length);
+                let c1Total = c1Suma / numVariable;
+                //Devoolvemos el resultado
+                return c1Total;
+
+            }
+
+            function calculoC3(arr) {
+                let c1Suma = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    //Sumamos continuamente todos los números del arr en el for
+                    c1Suma += arr[i];
+                };
+                //Cuando ya hemos recorrido el arr, dividimos entre x numeros
+                let numVariable = (arr.length);
+                let c1Total = c1Suma / numVariable;
+                //Devoolvemos el resultado
+                return c1Total;
+
+            }
+
+
+            function calculoFinal(arr) {
+                let cSuma = 0;
+                for (let i = 0; i < arr.length; i++) {
+                    //Sumamos continuamente todos los números del arr en el for
+                    cSuma += arr[i];
+                };
+                //Cuando ya hemos recorrido el arr, dividimos entre x numeros (este caso 3)
+                let numVariable = (arr.length);
+                let cTotal = cSuma / numVariable;
+                //Devoolvemos el resultado
+                return cTotal;
+            }
+        }
+
+        menu();
+    </script>
+</body>
+
+</html>
