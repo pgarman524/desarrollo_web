@@ -14,7 +14,8 @@
             let articulo = "Cod      Nombre      Precio      Cantidad    Subtotal\n";
 
             for (let i = 0; i < cesta.length; i++) {
-                articulo += cesta[i].cod + "             " + cesta[i].nombre + "            " + cesta[i].precio + "              " + cesta[i].cantidad + "            " + cesta[i].subtotal + "\n" + "\n Total: " + (cesta[i].subtotal += cesta[i].subtotal);
+                articulo += cesta[i].cod + "             " + cesta[i].nombre + "            " + cesta[i].precio + "              " +
+                    cesta[i].cantidad + "            " + cesta[i].subtotal + "\n" + "\n                                             Total: " + (cesta[i].subtotal += cesta[i].subtotal);
             }
 
             alert(articulo);
