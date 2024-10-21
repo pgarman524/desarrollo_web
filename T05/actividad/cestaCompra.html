@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function mostrarTabla() {
+            let articulo = "Cod      Nombre      Precio      Cantidad    Subtotal\n";
+
+            for (let i = 0; i < cesta.length; i++) {
+                articulo += cesta[i].cod + "             " + cesta[i].nombre + "            " + cesta[i].precio + "              " + cesta[i].cantidad + "            " + cesta[i].subtotal + "\n" + "\n Total: " + (cesta[i].subtotal += cesta[i].subtotal);
+            }
+
+            alert(articulo);
+        }
+
+        function crearArticulo() {
+            let cod = 0;
+            let articulo = {
+                cod: cod++,
+                nombre: prompt("Introduce el nombre del artículo: "),
+                precio: Number(prompt("Introduce el precio: ")),
+                cantidad: Number(prompt("Introduce la cantidad: ")),
+                subtotal: 0
+            };
+            articulo.subtotal = articulo.precio * articulo.cantidad;
+            return articulo;
+        }
+
+
+
+        function menuFuncion() {
+            cesta = [];
+
+            do {
+
+
+                let mensaje =
+                    "Elige una opción:\n" +
+                    "   1.Mostrar la tabla.\n" +
+                    "   2.Insertar artículo.\n" +
+                    "   3.Borrar artículo.\n" +
+                    "   4.Borrar cesta.\n" +
+                    "   5.Finalizar";
+                // let selector = isNaN(prompt(selector));
+
+                /*
+                  1. Transformamos el mensaje en el selector para usar el número introducido en el switch  
+                  2. Creamos un if para los errores. Si no es número devuelve verdadero, luego controla que el número esté entre 1 y 5
+                */
+                selector = parseInt(prompt(mensaje));
+                if (isNaN(selector) || selector > 5 || selector < 1) {
+                    alert("Introduce un número correcto");
+
+                }
+
+                switch (selector) {
+                    case 1:
+                        alert("Pikachu")
+                        mostrarTabla();
+                        break;
+
+                    case 2:
+                        cesta.push(crearArticulo());
+                        alert("Diplosion")
+                        break;
+
+                    case 3:
+
+                        alert("Lapras")
+                        break;
+
+                    case 4:
+
+                        alert("Drouncee")
+                        break;
+                    case 5:
+                        break;
+                }
+            } while (selector != 5)
+        }
+
+
+
+
+
+
+        menuFuncion();
+    </script>
+</body>
+
+</html>
