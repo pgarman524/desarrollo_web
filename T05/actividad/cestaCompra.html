@@ -12,29 +12,63 @@
     <script>
         function mostrarTabla() {
             let articulo = "Cod      Nombre      Precio      Cantidad    Subtotal\n";
-
+            let total = 0;
             for (let i = 0; i < cesta.length; i++) {
                 articulo += cesta[i].cod + "             " + cesta[i].nombre + "            " + cesta[i].precio + "              " +
-                    cesta[i].cantidad + "            " + cesta[i].subtotal + "\n" + "\n                                             Total: " + (cesta[i].subtotal += cesta[i].subtotal);
+                    cesta[i].cantidad + "            " + cesta[i].subtotal + "\n";
+                total += cesta[i].subtotal;
             }
 
-            alert(articulo);
+            alert(articulo + "                                                               Total: " + total);
         }
 
+
+
+
+
         function crearArticulo() {
-            let cod = 0;
+            //Creo un número random para el cod 0 - 100
+            let codigo = Math.ceil(Math.random() * 100 + 1);
+            //Si el código es igual a uno de los códigos ya creados, este crea un nuevo código
+            for (let i = 0; i < cesta.length; i++) {
+                //Si el código es igual que uno ya creado
+                if (codigo == cesta[i].cod) {
+                    //El código irá creando un código random hasta que sea distinto
+                    do {
+                        codigo = Math.ceil(Math.random() * 100 + 1);
+                    } while (codigo !== cesta[i].cod)
+                }
+            }
+
             let articulo = {
-                cod: cod++,
+                cod: codigo,
                 nombre: prompt("Introduce el nombre del artículo: "),
                 precio: Number(prompt("Introduce el precio: ")),
                 cantidad: Number(prompt("Introduce la cantidad: ")),
                 subtotal: 0
             };
             articulo.subtotal = articulo.precio * articulo.cantidad;
+
             return articulo;
         }
 
 
+        function borrarArticulo() {
+            let cod = prompt("Introduce el COD del artículo a borrar: ")
+            for (let i = 0; i < cesta.length; i++) {
+                if (cesta[i].cod == cod) {
+                    cesta.splice(i, 1);
+                    //Necesitamos break para que salga del bucle creado y evitar que siga buscando el índice. Sino se queda en bucle infinito
+                    break;
+                }
+            }
+        }
+
+
+        function borrarCesta() {
+            //Simplemente crea de nuevo cesta vacía. Easy
+            cesta = [];
+        }
 
         function menuFuncion() {
             cesta = [];
@@ -63,23 +97,23 @@
 
                 switch (selector) {
                     case 1:
-                        alert("Pikachu")
+
                         mostrarTabla();
                         break;
 
                     case 2:
                         cesta.push(crearArticulo());
-                        alert("Diplosion")
+
                         break;
 
                     case 3:
 
-                        alert("Lapras")
+                        borrarArticulo();
                         break;
 
                     case 4:
 
-                        alert("Drouncee")
+                        borrarCesta()
                         break;
                     case 5:
                         break;
