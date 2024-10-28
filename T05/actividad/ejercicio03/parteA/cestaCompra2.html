@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        class CrearArticulo {
+            introducirArt(codigo) {
+
+                let articulo = {
+                    cod: codigo,
+                    nombre: prompt("Introduce el nombre del artículo: "),
+                    precio: Number(prompt("Introduce el precio: ")),
+                    cantidad: Number(prompt("Introduce la cantidad: ")),
+                    subtotal: 0
+                };
+                articulo.subtotal = articulo.precio * articulo.cantidad;
+
+                return articulo;
+
+            }
+        }
+
+
+
+        class menuFuncion {
+            #cod = 0;
+            #cesta;
+            constructor() {
+                this.cesta = [];
+            }
+
+            mostrarTabla() {
+                let articulo = "Cod      Nombre      Precio      Cantidad    Subtotal\n";
+                let total = 0;
+                for (let i = 0; i < this.cesta.length; i++) {
+                    articulo += this.cesta[i].cod + "             " + this.cesta[i].nombre + "            " + this.cesta[i].precio + "              " +
+                        cesta[i].cantidad + "            " + cesta[i].subtotal + "\n";
+                    total += this.cesta[i].subtotal;
+                }
+
+                alert(articulo + "                                                               Total: " + total);
+            }
+
+
+            borrarArticulo() {
+                let cod = prompt("Introduce el COD del artículo a borrar: ")
+                for (let i = 0; i < this.cesta.length; i++) {
+                    if (this.cesta[i].cod == cod) {
+                        this.cesta.splice(i, 1);
+                        //Necesitamos break para que salga del bucle creado y evitar que siga buscando el índice. Sino se queda en bucle infinito
+                        break;
+                    }
+                }
+            }
+
+
+            borrarCesta() {
+                //Simplemente crea de nuevo cesta vacía. Easy
+                this.cesta = [];
+            }
+
+
+            menu() {
+
+
+                do {
+
+
+                    let mensaje =
+                        "Elige una opción:\n" +
+                        "   1.Mostrar la tabla.\n" +
+                        "   2.Insertar artículo.\n" +
+                        "   3.Borrar artículo.\n" +
+                        "   4.Borrar cesta.\n" +
+                        "   5.Finalizar";
+                    // let selector = isNaN(prompt(selector));
+
+                    /*
+                      1. Transformamos el mensaje en el selector para usar el número introducido en el switch  
+                      2. Creamos un if para los errores. Si no es número devuelve verdadero, luego controla que el número esté entre 1 y 5
+                    */
+                    selector = parseInt(prompt(mensaje));
+                    if (isNaN(selector) || selector > 5 || selector < 1) {
+                        alert("Introduce un número correcto");
+
+                    }
+
+                    switch (selector) {
+                        case 1:
+
+                            this.mostrarTabla();
+                            break;
+
+                        case 2:
+                            this.#cod ++;
+                            articulo = new CrearArticulo();
+                            this.cesta.push(articulo.introducirArt(this.#cod));
+
+                            break;
+
+                        case 3:
+
+                            this.borrarArticulo();
+                            break;
+
+                        case 4:
+
+                            this.borrarCesta()
+                            break;
+                        case 5:
+                            break;
+                    }
+                } while (selector != 5)
+            }
+        }
+        obj = new menuFuncion();
+        obj.menu();
+    </script>
+</body>
+
+</html>
