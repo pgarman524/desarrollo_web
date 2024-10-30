@@ -32,7 +32,7 @@
 
         class menuFuncion {
             #cod = 0;
-            #cesta;
+            #cesta = [];
             constructor() {
                 this.cesta = [];
             }
@@ -50,29 +50,13 @@
             }
 
 
-            borrarArticulo() {
-                let cod = prompt("Introduce el COD del artículo a borrar: ")
-                for (let i = 0; i < this.cesta.length; i++) {
-                    if (this.cesta[i].cod == cod) {
-                        this.cesta.splice(i, 1);
-                        //Necesitamos break para que salga del bucle creado y evitar que siga buscando el índice. Sino se queda en bucle infinito
-                        break;
-                    }
-                }
-            }
-
-
-            borrarCesta() {
-                //Simplemente crea de nuevo cesta vacía. Easy
-                this.cesta = [];
-            }
 
 
             menu() {
 
                 let selector;
                 do {
-
+                    let borrado = new Borrar()
 
                     let mensaje =
                         "Elige una opción:\n" +
@@ -107,13 +91,13 @@
                             break;
 
                         case 3:
-
-                            this.borrarArticulo();
+                            //this.cesta (un array) es el objeto que entra por parámetros
+                            borrado.borrarArticulo(this.cesta);
                             break;
 
                         case 4:
 
-                            this.borrarCesta()
+                            borrado.borrarCesta(this.cesta)
                             break;
                         case 5:
                             break;
@@ -121,6 +105,30 @@
                 } while (selector !== 5)
             }
         }
+
+        class Borrar {
+            //Para hacer borrarArticulo una clase necesitamos meter el objeto de cesta (cacharro) por parámetro. Sino no podrá leerlo
+            borrarArticulo(cacharro) {
+                let cod = prompt("Introduce el COD del artículo a borrar: ")
+                for (let i = 0; i < cacharro.length; i++) {
+                    if (cacharro[i].cod == cod) {
+                        cacharro.splice(i, 1);
+                        //Necesitamos break para que salga del bucle creado y evitar que siga buscando el índice. Sino se queda en bucle infinito
+                        break;
+                    }
+                }
+            }
+
+
+            borrarCesta(arr) {
+                //Le decimos al objeto que entra por parámetro que tenga extensión de 0 (Como es el array de cesta, esta se queda vacío)
+                arr.length = 0;
+            }
+        }
+
+
+
+
         obj = new menuFuncion();
         obj.menu();
     </script>

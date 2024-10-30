@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class Empleado {
+            nombre;
+            apellido;
+            #edad;
+
+            constructor(nombre, apellido, edad) {
+                this.nombre = nombre;
+                this.apellido = apellido;
+                this.#edad = edad;
+            }
+
+            muestra() {
+                alert(this.nombre + " " + this.apellido + " " + this.#edad);
+            }
+
+            get getEdad() {
+                return this.#edad;
+            }
+        }
+
+        class Profesor extends Empleado {
+            cargo;
+
+            constructor(nombre, apellido, edad, cargo) {
+                super(nombre, apellido, edad);
+                this.cargo = cargo;
+            }
+
+            muestraCargo() {
+                alert(this.nombre + " " + this.apellido + " " + this.edad + ". Con cargo de: " + this.cargo);
+            }
+        }
+
+
+        var pablo = new Profesor("Pablo", "García mangana", 27, "Programador");
+
+        pablo.muestraCargo();
+        //Como hacer el get
+        //  pablo.getEdad;
+    </script>
+</body>
+
+</html>
