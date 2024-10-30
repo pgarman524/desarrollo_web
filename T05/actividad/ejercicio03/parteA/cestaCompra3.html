@@ -11,6 +11,18 @@
 
     <script>
 
+        class Articulo {
+            #art = {};
+            constructor(cod, nombre, cantidad, precio) {
+                this.#art.cod = cod;
+                this.#art.nombre = nombre;
+                this.#art.cantidad = cantidad;
+                this.#art.precio = precio;
+                return this.#art;
+            }
+        }
+
+
         class CrearArticulo {
 
             constructor() {
