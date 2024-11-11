@@ -1,0 +1,224 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Solicitud Baja de Vehículos</title>
+
+    <!-- css bootstrap 533 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <!-- bootstrapicons 1.11.3 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        input[type=text]:required {
+            border: 1px solid red;
+        }
+
+        input[type=text]:valid {
+            border: 1px solid green;
+        }
+
+        input[type=date]:required {
+            border: 1px solid red;
+        }
+
+        input[type=date]:valid {
+            border: 1px solid green;
+        }
+
+        input[type=email]:required {
+            border: 1px solid red;
+        }
+
+        input[type=email]:valid {
+            border: 1px solid green;
+        }
+    </style>
+
+    <script>
+
+        class Formulario {
+            constructor() { }
+
+            cambioDNI() {
+                //Creamos el elemento dniLabel para recoger el id del label a editar
+                let dniLabel = document.getElementById("dni_id");
+                //Editamos el interior del label
+                dniLabel.innerHTML = "Editando DNI...";
+            }
+
+            restaurarDNI() {
+                let dniLabel = document.getElementById("dni_id");
+                dniLabel.innerHTML = "DNI";
+            }
+
+            //Creamos un método para cuando está en foco o no
+            cambios() {
+                //Recogemos el id del action en vez del label
+                let dniInput = document.getElementById("dni");
+
+                //aquí le decimos de usar uno u otro método si está en foco o no
+                dniInput.addEventListener("focus", () => this.cambioDNI());
+
+
+                dniInput.addEventListener("blur", () => this.restaurarDNI());
+            }
+
+
+
+
+        }
+
+
+        /*
+                let matriculaInput = document.getElementById("matricula");
+
+                matriculaInput.addEventListener("invalid", function (event) {
+                    event.target.setCustomValidity("La matrícula debe tener el formato 1234ABC (4 números seguidos de 3 letras)");
+                });
+        */
+
+
+
+
+
+
+
+    </script>
+</head>
+
+<body>
+    <!-- Capa principal -->
+    <div class="container">
+        <!-- cabecera documento -->
+        <header class="pb-3 mb-4 border-bottom">
+            <!-- icono -->
+            <i class="bi bi-car-front-fill"></i>
+            <span class="fs-6">Actividad 01</span>
+        </header>
+
+        <!-- Formulario -->
+        <p class="h1">Solicitud Baja de Vehículos</p>
+        <legend>Datos de Vehículos</legend>
+        <!-- Primer cubo -->
+        <form action="#" method="GET">
+            <div class="mb-3 row">
+                <div class="col-3">
+                    <label for="matricula" class="form-label">Matrícula</label>
+                    <input type="text" class="form-control" id="matricula" required name="matricula">
+                </div>
+                <div class="col-3">
+                    <label for="Fmatriculacion" class="form-label">Fecha de Matriculación</label>
+                    <input type="date" class="form-control" id="Fmatriculacion" required name="date">
+                </div>
+                <div class="col-6">
+                    <label for="digitos" class="form-label">6 últimos dígitos(nº bastidor)</label>
+                    <input type="text" class="form-control" id="digitos" required minlength="6" maxlength="6" name="nBastidor">
+                </div>
+            </div>
+
+            <!-- Segundo cubo -->
+            <legend>Datos del Titular</legend>
+            <div class="mb-3 row">
+                <div class="col-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre" required name="nombre">
+                </div>
+                <div class="col-3">
+                    <label for="apellidos" class="form-label">Apellidos</label>
+                    <input type="text" class="form-control" id="apellidos" required name="apellidos">
+                </div>
+                <div class="col-6">
+                    <label for="domicilio" class="form-label">Domicilio</label>
+                    <input type="text" class="form-control" id="domicilio" required name="domicilio">
+                </div>
+            </div>
+
+            <!-- Tercer cubo -->
+            <div class="mb-3 row">
+                <div class="col-3">
+                    <label id="dni_id" class="form-label">DNI</label>
+                    <input type="text" class="form-control" id="dni" required pattern="[0-9]{8}[A-Za-z]{1}" name="dni">
+                </div>
+                <div class="col-3">
+                    <label for="correo" class="form-label">Correo Electrónico</label>
+                    <input type="email" class="form-control" id="correo" placeholder="miCorreo@algo.com" required
+                        pattern="^([0-9]{9})|([A-Za-z0-9._%\+\-]+@[a-z0-9.\-]+\.[a-z]{2,3})$" name="email">
+                </div>
+                <div class="col-3">
+                    <label for="tlf" class="form-label">Tlf</label>
+                    <input type="text" class="form-control" id="tlf" required minlength="9" maxlength="9"
+                        pattern="[0-9]{9}" name="telefono">
+                </div>
+                <!-- checkbox -->
+                <div class="col-3">
+                    <p>Tipo de baja: </p>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="temporal" required>
+                        <label class="form-check-label" for="temporal">
+                            Temporal
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="definitiva" required>
+                        <label class="form-check-label" for="definitiva">
+                            Definitiva
+                        </label>
+                    </div>
+                </div>
+
+                <p></p>
+
+                <!-- botones -->
+                <div>
+                    <button type="submit" class="btn btn-primary">Enviar</button>
+                </div>
+
+        </form>
+    </div>
+
+    <!-- Pie del documento -->
+    <footer class="footer mt-auto py-3 fixed-bottom bg-light">
+        <div class="container">
+            <span class="text-muted">
+                ©2024 Pablo García Mangana - DWES - 2º DAW - Curso 24/25
+            </span>
+        </div>
+    </footer>
+
+
+
+    </div>
+    <!-- javascript bootstrap 533-->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
+    <script>
+        //Tenemos que poner esta parte justo antes de acabar el body o no funcionará
+        let matriculaInput = document.getElementById("matricula");
+
+        matriculaInput.addEventListener("invalid", function (event) {
+            event.target.setCustomValidity("La matrícula debe tener el formato 1234ABC (4 números seguidos de 3 letras)");
+        });
+
+        matriculaInput.addEventListener("input", function () {
+            if (matriculaInput.validity.patternMismatch) {
+                matriculaInput.setCustomValidity("La matrícula debe tener el formato 1234ABC (4 números seguidos de 3 letras)");
+            } else {
+                matriculaInput.setCustomValidity("");
+            }
+        });
+
+
+
+        let formulario = new Formulario();
+        formulario.cambios();
+    </script>
+
+
+</body>
+
+</html>
