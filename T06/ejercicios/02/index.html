@@ -59,8 +59,9 @@
                 </div>
                 <div class="col-3">
                     <label for="inputpass" class="form-label">Password</label>
-                    <input type="password" class="form-control" id="inputpass" name="pass" required>
-                    <!-- pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$" -->
+                    <input type="password" class="form-control" id="inputpass" name="pass" required
+                        pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$">
+
                 </div>
                 <!-- botones -->
             </div>
@@ -72,9 +73,9 @@
                 class Formulario {
                     // /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/
                     #usuarios = [
-                        { user: "Juan", pass: "Juan1234" },
-                        { user: "Maria", pass: "Maria5678" },
-                        { user: "Pedro", pass: "Pedro4321" }
+                        { user: "Juan", pass: "Xg7fQ2mR" },
+                        { user: "Maria", pass: "T5zD4lQy" },
+                        { user: "Pedro", pass: "P7rJ2vAk" }
                     ];
 
                     constructor() {
@@ -90,17 +91,29 @@
                         //creamos la variable para el id de pass
                         let passComprobacion = document.getElementById("inputpass");
                         //creamos el pattern
-                        let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+                        let re = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
                         //creamos la variable para la id del botón enviar
                         let enviarPass = document.getElementById("enviar")
 
-                        //cuando cliquemos con "input" en el botón enviar, entonces valida con un if si el correo tiene formato válido o no
-                        enviarPass.addEventListener("click", function (event) {
-                            if (!re.test(passComprobacion.value)) {
-                                event.target.setCustomValidity("Tipo de contraseña no válida(8 caracteres mínimo, al menos 1 mayúscula, 1 minúscula, y 1 número.)")
+                        // este check nos servirá para cambiar el mensaje
+                        let check = false;
 
+
+                        //cuando cliquemos con "input" en el botón enviar, entonces valida con un if si la contraseña es válida o no
+                        enviarPass.addEventListener("click", function (event) {
+
+                            if (!re.test(passComprobacion.value)) {
+                                check = true
                             }
+
+                            //si la contraseña es válida, entonces
+                            if (check) {
+                                passComprobacion.setCustomValidity("Tipo de contraseña no válida(8 caracteres mínimo, al menos 1 mayúscula, 1 minúscula, y 1 número.)")
+                            }
+
+
+
                         });
                     }
 
@@ -110,15 +123,26 @@
                         let passComprobacion = document.getElementById("inputpass");
 
                         let enviarPass = document.getElementById("enviar")
-                        enviarPass.addEventListener("input", function (event) {
-                            for (let i of this.getUsuarios()) {
-                                if (i.user == usuarioInput & i.pass == passComprobacion) {
+
+
+
+
+                        enviarPass.addEventListener("click", function (event)  {
+
+                            let check = false;
+
+                            for (let i of getUsuarios()) {
+                                if (i.user == usuarioInput.value && i.pass == passComprobacion.value) {
+                                    check = true;
                                     alert("El usuario es correcto");
-                                } else {
+                                    break;
+                                }
+
+                                if (!check) {
                                     alert("El usuario no es corrento :,C")
                                 }
                             }
-                        })
+                        });
 
 
 
@@ -133,6 +157,8 @@
                 }
                 let formulario = new Formulario();
                 formulario.comprobacion();
+
+                formulario.verificacionUsuarios();
             </script>
         </form>
     </div>
